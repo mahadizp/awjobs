@@ -53,21 +53,11 @@ function App() {
               notificationProvider={notificationProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
-                },
-                {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: "job_posts",
+                  list: "/job-posts",
+                  create: "/job-posts/create",
+                  edit: "/job-posts/edit/:id",
+                  show: "/job-posts/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -97,12 +87,6 @@ function App() {
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
                     <Route path="show/:id" element={<BlogPostShow />} />
-                  </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
