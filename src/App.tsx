@@ -19,21 +19,21 @@ import routerBindings, {
 } from "@refinedev/react-router-v6";
 import { dataProvider, liveProvider } from "@refinedev/supabase";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import authProvider from "./authProvider";
+// import authProvider from "./authProvider";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
+  JobPostCreate,
+  JobPostEdit,
+  JobPostList,
+  JobPostShow,
+} from "./pages/job-posts";
 import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
+  SkillCreate,
+  SkillEdit,
+  SkillList,
+  SkillShow,
+} from "./pages/skills";
 import { supabaseClient } from "./utility";
 
 function App() {
@@ -48,26 +48,26 @@ function App() {
             <Refine
               dataProvider={dataProvider(supabaseClient)}
               liveProvider={liveProvider(supabaseClient)}
-              authProvider={authProvider}
+              // authProvider={authProvider}
               routerProvider={routerBindings}
               notificationProvider={notificationProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  name: "job_posts",
+                  list: "/job-posts",
+                  create: "/job-posts/create",
+                  edit: "/job-posts/edit/:id",
+                  show: "/job-posts/show/:id",
                   meta: {
                     canDelete: true,
                   },
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: "skills",
+                  list: "/skills",
+                  create: "/skills/create",
+                  edit: "/skills/edit/:id",
+                  show: "/skills/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -90,19 +90,19 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="blog_posts" />}
+                    element={<NavigateToResource resource="job_posts" />}
                   />
-                  <Route path="/blog-posts">
-                    <Route index element={<BlogPostList />} />
-                    <Route path="create" element={<BlogPostCreate />} />
-                    <Route path="edit/:id" element={<BlogPostEdit />} />
-                    <Route path="show/:id" element={<BlogPostShow />} />
+                  <Route path="/job-posts">
+                    <Route index element={<JobPostList />} />
+                    <Route path="create" element={<JobPostCreate />} />
+                    <Route path="edit/:id" element={<JobPostEdit />} />
+                    <Route path="show/:id" element={<JobPostShow />} />
                   </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
-                    <Route path="create" element={<CategoryCreate />} />
-                    <Route path="edit/:id" element={<CategoryEdit />} />
-                    <Route path="show/:id" element={<CategoryShow />} />
+                  <Route path="/skills">
+                    <Route index element={<SkillList />} />
+                    <Route path="create" element={<SkillCreate />} />
+                    <Route path="edit/:id" element={<SkillEdit />} />
+                    <Route path="show/:id" element={<SkillShow />} />
                   </Route>
                   <Route path="*" element={<ErrorComponent />} />
                 </Route>
@@ -147,6 +147,6 @@ function App() {
       </RefineKbarProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
